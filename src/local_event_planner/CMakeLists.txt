@@ -1,6 +1,6 @@
 # crypto/CMakeLists.txt
 set(ROOT src)
-set(LIBNAME calculator)
+set(LIBNAME local_event_planner)
 
 message(STATUS "[${ROOT}/${LIBNAME}] Module Processing...")
 

@@ -1,6 +1,6 @@
 # Set the minimum required CMake version
 cmake_minimum_required(VERSION 3.12)
-project(calculatorapp)
+project(local_event_planner_app)
 
 set(ROOT src)
 
@@ -40,18 +40,18 @@ set(CRYPTOPP_BUILD_SHARED OFF)
 set(CRYPTOPP_USE_MASTER_BRANCH FALSE)
 
 option(ENABLE_UTILITY "Enable Utility Module" ON)
-option(ENABLE_CALCULATOR "Enable Calculator Module" ON)
-option(ENABLE_CALCULATOR_APP "Enable Calculator Application" ON)
+option(ENABLE_LOCAL_EVENT_PLANNER "Enable Local Event Planner Module" ON)
+option(ENABLE_LOCAL_EVENT_PLANNER_APP "Enable Local Event Planner Application" ON)
 option(ENABLE_TESTS "Enable All Tests" ON)
 
 # Configure tests
 add_compile_definitions(ENABLE_UTILITY_TEST)
-add_compile_definitions(ENABLE_CALCULATOR_TEST)
+add_compile_definitions(ENABLE_LOCAL_EVENT_PLANNER_TEST)
 
 
 # Configure logs
 add_compile_definitions(ENABLE_UTILITY_LOGGER)
-add_compile_definitions(ENABLE_CALCULATOR_LOGGER)
+add_compile_definitions(ENABLE_LOCAL_EVENT_PLANNER_LOGGER)
 
 # Set the output directories for Debug and Release configurations
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_BINARY_DIR}/build/Debug)
@@ -101,13 +101,13 @@ if(ENABLE_UTILITY)
 endif()
 
 # Logger submodule
-if(ENABLE_CALCULATOR)
-	add_subdirectory(${ROOT}/calculator)
+if(ENABLE_LOCAL_EVENT_PLANNER)
+	add_subdirectory(${ROOT}/local_event_planner)
 endif()
 
 # BigInteger for Crypto submodule
-if(ENABLE_CALCULATOR_APP)
-	add_subdirectory(${ROOT}/calculatorapp)
+if(ENABLE_LOCAL_EVENT_PLANNER_APP)
+	add_subdirectory(${ROOT}/local_event_planner_app)
 endif()
 
 # Tests
