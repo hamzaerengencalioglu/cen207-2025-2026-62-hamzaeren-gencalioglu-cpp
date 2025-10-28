@@ -38,7 +38,6 @@ if(ENABLE_UTILITY)
 endif()
 
 # Calculator tests
-if(ENABLE_CALCULATOR)
-	add_subdirectory(calculator)
+if(ENABLE_LOCAL_EVENT_PLANNER)
+	add_subdirectory(local_event_planner)
 endif()
-

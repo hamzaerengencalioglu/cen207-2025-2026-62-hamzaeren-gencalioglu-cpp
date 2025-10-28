@@ -1,4 +1,4 @@
-# Calculator Project Library Generation and Testing Template
+# Local Event Planner Project Library Generation and Testing Template
 
 ## Overview
 

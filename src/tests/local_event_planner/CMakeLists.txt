@@ -1,6 +1,6 @@
 # tests/aka5g/CMakeLists.txt
 set(ROOT src/tests)
-set(TESTNAME calculator)
+set(TESTNAME local_event_planner)
 set(EXENAME ${TESTNAME}_tests)
 
 message(STATUS "[${ROOT}/${TESTNAME}] Module Tests...")

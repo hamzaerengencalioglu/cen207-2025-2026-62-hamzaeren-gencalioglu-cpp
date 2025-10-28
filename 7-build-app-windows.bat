@@ -59,7 +59,7 @@ call reportgenerator "-title:Local Event Planner Library Documentation Coverage 
 call reportgenerator "-reports:**/lcov_doxygen_lib_win.info" "-targetdir:assets/doccoveragelibwin" "-reporttypes:Badges" "-filefilters:-*.md;-*.xml;-*[generated];-*build*"
 
 echo Run Documentation Coverage Report Generator for Unit Tests 
-call reportgenerator "-title:Local Event Planner Library Test Documentation Coverage Report (Windows)" "-reports:**/lcov_doxygen_test_win.info" "-targetdir:docs/coverxygentestwin" "-reporttypes:Html" "-filefilters:-*.md;-*.xml;-*[generated];-*build*" "-historydir:report_doc_test_hist_win"
+call reportgenerator "-title:Local Event Planner Library Catalog Library Test Documentation Coverage Report (Windows)" "-reports:**/lcov_doxygen_test_win.info" "-targetdir:docs/coverxygentestwin" "-reporttypes:Html" "-filefilters:-*.md;-*.xml;-*[generated];-*build*" "-historydir:report_doc_test_hist_win"
 call reportgenerator "-reports:**/lcov_doxygen_test_win.info" "-targetdir:assets/doccoveragetestwin" "-reporttypes:Badges" "-filefilters:-*.md;-*.xml;-*[generated];-*build*"
 
 echo Testing Application with Coverage
@@ -83,11 +83,11 @@ cd ..
 echo Generate Test Coverage Data for Utility
 call OpenCppCoverage.exe --export_type=binary:utility_tests_unit_win.cov --sources src\utility\src --sources src\utility\header --sources src\tests\utility -- build_win\build\Debug\utility_tests.exe
 
-echo Generate Test Coverage Data for Local event Planner
+echo Generate Test Coverage Data for Local Event Planner
 call OpenCppCoverage.exe --export_type=binary:local_event_planner_tests_unit_win.cov --sources src\local_event_planner\src --sources src\local_event_planner\header --sources src\tests\local_event_planner -- build_win\build\Debug\local_event_planner_tests.exe
 
 echo Generate Test Coverage Data for Local Event Planner App and Combine Results
-call OpenCppCoverage.exe --input_coverage=utility_tests_unit_win.cov --input_coverage=local_event_planner_tests_unit_win.cov --export_type=cobertura:local_event_planner_app_unit_win_cobertura.xml --sources src\utility\src --sources src\utility\header --sources src\local_event_planner\src --sources src\local_event_planner\header --sources src\local_event_planner_app\src --sources src\local_event_planner_app\header --sources src\tests\utility --sources src\tests\local_event_planner -- build_win\build\Debug\local_event_planner_app.exe
+call OpenCppCoverage.exe --input_coverage=utility_tests_unit_win.cov --input_coverage=local_event_planner_tests_unit_win.cov --export_type=cobertura:local_event_planner_app_unit_win_cobertura.xml --sources src\utility\src --sources src\utility\header --sources src\local_event_planner\src --sources src\local_event_planner\header --sources src\local_event_planner_app\src --sources src\local_event_planner\header --sources src\tests\utility --sources src\tests\local_event_planner -- build_win\build\Debug\local_event_planner_app.exe
 
 echo Generate Unit Test Coverage Report
 call reportgenerator "-title:Local Event Planner Library Unit Test Coverage Report (Windows)" "-targetdir:docs/coveragereportlibwin" "-reporttypes:Html" "-reports:**/local_event_planner_app_unit_win_cobertura.xml" "-sourcedirs:src/utility/src;src/utility/header;src/local_event_planner/src;src/local_event_planner/header;src/local_event_planner_app/src;src/local_event_planner_app/header;src/tests/utility;src/tests/local_event_planner" "-filefilters:-*minkernel\*;-*gtest*;-*a\_work\*;-*gtest-*;-*gtest.cc;-*gtest.h;-*build*" "-historydir:report_test_hist_win"
@@ -124,14 +124,14 @@ tar -czvf release_win\windows-publish-binaries.tar.gz -C publish_win .
 
 echo Package Publish Windows Binaries
 call robocopy src\utility\header "build_win\build\Release" /E
-call robocopy src\calculator\header "build_win\build\Release" /E
-call robocopy src\calculatorapp\header "build_win\build\Release" /E
+call robocopy src\local_event_planner\header "build_win\build\Release" /E
+call robocopy src\local_event_planner_app\header "build_win\build\Release" /E
 tar -czvf release_win\windows-release-binaries.tar.gz -C build_win\build\Release .
 
 echo Package Publish Debug Windows Binaries
 call robocopy src\utility\header "build_win\build\Debug" /E
-call robocopy src\calculator\header "build_win\build\Debug" /E
-call robocopy src\calculatorapp\header "build_win\build\Debug" /E
+call robocopy src\local_event_planner\header "build_win\build\Debug" /E
+call robocopy src\local_event_planner_app\header "build_win\build\Debug" /E
 tar -czvf release_win\windows-debug-binaries.tar.gz -C build_win\build\Debug .
 
 echo Package Publish Test Coverage Report
