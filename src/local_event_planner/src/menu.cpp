@@ -227,14 +227,37 @@ int firstMenu()
 	}
 }
 
-int mainMenu(const int userID, const char* userName)
+int eventMenu(const int userID, const char* userName)
 {
 	const char mainMenuItems[][30] = 
 	{
-		"add event",
-		"view events",
-		"logout"
-
+		"Create Event",
+		"Manage Events",
+		"Return"
 	};
 	return 1;
+
+	while (true)
+	{
+		int selection = runMenu(mainMenuItems, sizeof(mainMenuItems) / sizeof(mainMenuItems[0]));
+
+		switch (selection)
+		{
+		case 0:
+			if (isTestEnvironmentMenu) return 0;
+			//create event
+			break;
+		case 1:
+			if (isTestEnvironmentMenu) return 0;
+			//Manage events
+			break;
+		case 2:
+			if (isTestEnvironmentMenu) return 0;
+			//return
+			break;
+		default:
+			printf("Invalid selection!\n");
+			break;
+		}
+	}
 }
